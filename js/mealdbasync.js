@@ -44,11 +44,7 @@ const loadMealDetail = async mealId => {
 
     const res = await fetch(url);
     const data = await res.json;
-    displayMealDetail(data.meals[0])
-
-    // fetch(url)
-    //     .then(response => response.json())
-    //     .then(data => displayMealDetail(data.meals[0]));
+    displayMealDetail(data.meals[0]);
 };
 
 const displayMealDetail = meal => {
@@ -66,4 +62,4 @@ const displayMealDetail = meal => {
     </div>
     `;
     mealDetails.appendChild(div);
-}
+};
