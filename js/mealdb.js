@@ -2,27 +2,25 @@ const searchFood = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     if (searchText == '') {
-        console.log('Please write something')
-    } 
-    else {
+        const errorMsg = document.getElementById('error-msg');
+        errorMsg.innerText = `Please write something`;
+    } else {
         // load data
         const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
         fetch(url)
             .then(response => response.json())
             .then(data => displaySearchResult(data.meals));
+
+        const errorMsg = document.getElementById('error-msg');
+        errorMsg.innerText = '';
     }
     // clear data
     searchField.value = '';
-
-
 };
 
 const displaySearchResult = meals => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
-    if (meals.length == 0) {
-        console.log('No result found');
-    }
     meals.forEach(meal => {
         console.log(meal);
         const div = document.createElement('div');
